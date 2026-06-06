@@ -472,14 +472,12 @@ function initPresets() {
   const img = document.createElement("img");
   img.src = PRESET_URL;
   img.alt = "Preset Avatar";
-  img.crossOrigin = "anonymous";
 
   btn.appendChild(img);
   presetsContainer.appendChild(btn);
 
   // Preload the image
   const image = new Image();
-  image.crossOrigin = "anonymous";
   image.onload = () => {
     inputPreview.src = PRESET_URL;
     inputPreview.style.display = "block";
@@ -489,18 +487,7 @@ function initPresets() {
     renderAvatar(image);
   };
   image.onerror = () => {
-    // Fallback: If CORS fails, try standard load (without anonymous)
-    console.warn("Could not load image with anonymous CORS, trying standard loading.");
-    
-    const fallbackImage = new Image();
-    fallbackImage.onload = () => {
-      inputPreview.src = PRESET_URL;
-      inputPreview.style.display = "block";
-      inputPlaceholder.style.display = "none";
-      activeImage = fallbackImage;
-      renderAvatar(fallbackImage);
-    };
-    fallbackImage.src = PRESET_URL;
+    setStatus(currentLang === "en" ? "Failed to load preset avatar." : "无法加载预设头像。");
   };
   image.src = PRESET_URL;
 
