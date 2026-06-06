@@ -34,7 +34,7 @@
 # 使用 Python 快速启动
 python -m http.server 8000
 ```
-启动后在浏览器中访问 `http://localhost:8000` 即可开始使用。项目可以直接部署到 GitHub Pages 等静态托管平台。
+启动后在浏览器中访问 `http://localhost:8000` 即可开始使用。项目可以直接部署到 GitHub Pages 等静态托管平台。<br>
 **注意：**部署到 Vercel 时请选择项目类型为其他，不要选择 Python ，这样部署才不会报错。
 
 ### Python 脚本运行
