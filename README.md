@@ -35,6 +35,7 @@ Clone or download this repository and launch a static server in the root folder:
 python -m http.server 8000
 ```
 Open `http://localhost:8000` in your web browser. You can deploy this folder directly to GitHub Pages or any static site hosting provider.
+**Note:** When deploying to Vercel, please select "Other" as the project type instead of "Python" to avoid deployment errors.
 
 ### Running the Python Tool
 1. Install dependencies:
