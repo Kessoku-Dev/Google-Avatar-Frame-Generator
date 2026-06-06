@@ -1,64 +1,58 @@
 # Google Avatar Frame Generator
 
-Bring the iconic Google profile ring to any avatar.
+English | [简体中文](README_ZH.md)
 
-When we use Google products, our profile photos often get wrapped in that recognizable four-color Google ring. It makes a plain avatar feel brighter, cleaner, and much more distinctive. The problem is that we usually cannot download the avatar together with the ring and reuse it on other platforms.
+Bring the iconic Google profile ring to any avatar with ease.
 
-That is exactly why this tool exists.
 
-## What This Project Does
+## Features
 
-This project helps you generate a Google-style avatar locally or directly in the browser:
+This tool allows you to generate framed avatars directly in your browser or run it locally using a Python script:
 
-- Upload an image and turn it into a framed avatar with the signature Google color ring
-- Keep the calibrated ring proportions and segment positions
-- Export the result as a PNG
-- Use it online or run it from source locally
+### 🌐 Web App
+- **Real-time Adjustments**: Use interactive sliders to fine-tune ring thickness, white spacer gap, avatar zoom, and horizontal/vertical offsets.
+- **Color Palettes**: Choose from 4 distinct color schemes (Google Classic, Monochrome, Neon, and Pastel).
+- **Privacy & Performance**: All canvas operations are processed locally in your browser. Nothing is sent to a server.
 
-## Try It Online
+### 🐍 Python CLI Tool
+- **Full Parameter Support**: Run the script with custom options matching the web application (thickness, gap, zoom, offset, and color palettes).
+- **Headless Safety Fallback**: Includes a Tkinter file picker that automatically falls back to interactive text prompts when run in non-GUI terminal or server environments.
 
-You can use the web version here:
+## File Structure
 
-[https://2010384626.github.io/Google-Avatar-Frame-Generator/](https://2010384626.github.io/Google-Avatar-Frame-Generator/)
+- `index.html`: Structuring the web layout.
+- `style.css`: Premium responsive design styles based on Glassmorphism.
+- `script.js`: Core Canvas drawing, translations, and slider event logic.
+- `google_avatar_frame.py`: Local Python command-line image generator.
+- `requirements.txt`: Python dependencies list.
 
-The online version runs entirely in the browser, so it is quick and easy to use.
+## Getting Started
 
-## Run It Locally
-
-If you want to use the source code locally, clone or download this repository and install the required dependency listed in [requirements.txt](requirements.txt).
-
-### Install
-
+### Running the Web App
+Clone or download this repository and launch a static server in the root folder:
 ```bash
-pip install -r requirements.txt
+# Start a simple server using Python
+python -m http.server 8000
 ```
+Open `http://localhost:8000` in your web browser. You can deploy this folder directly to GitHub Pages or any static site hosting provider.
 
-### Python Script
+### Running the Python Tool
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Execute the script:
+   - Interactive UI mode:
+     ```bash
+     python google_avatar_frame.py
+     ```
+   - Command-line generation with parameters:
+     ```bash
+     python google_avatar_frame.py input.png -o output.png --zoom 1.2 --offset-x 0.05 --palette neon
+     ```
+     Run `python google_avatar_frame.py --help` for the full parameter list.
 
-```bash
-python google_avatar_frame.py
-```
+## Credits & Attributions
 
-You can also pass an input image path directly:
-
-```bash
-python google_avatar_frame.py your_avatar.jpg -o result.png
-```
-
-## Project Files
-
-- `index.html`, `style.css`, `script.js`: GitHub Pages web app
-- `google_avatar_frame.py`: local Python version
-- `requirements.txt`: Python dependency list
-
-## Why It Exists
-
-This is a small utility built for a very practical reason: sometimes we just want to keep the colorful Google avatar look and use it somewhere else.
-
-If that sounds useful to you, open the online app and try it with your own profile photo.
-
-## Thanks to Linux Do
-
-This forum has been a great help to me; I welcome everyone to browse and join.
-
-linux.do
+- **Original Author**: Special thanks to the original creator [2010384626](https://github.com/2010384626) for the core frame layout and baseline algorithm.
+- **AI Attribution**: The visual redesign (Glassmorphism layout, color themes, responsive sliders, translations) and Python CLI upgrades (custom arguments, GUI crash protection) were generated and optimized with Google Gemini.

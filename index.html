@@ -1,79 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Avatar Frame Generator</title>
+  <title>Google Avatar Frame Generator | 谷歌风格头像生成器</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="https://img.998315.xyz/api/Pic/google-avatar-frame.png">
 </head>
 <body>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo">
+        <span class="logo-dot blue"></span>
+        <span class="logo-dot red"></span>
+        <span class="logo-dot yellow"></span>
+        <span class="logo-dot green"></span>
+        <span class="logo-text">G-Avatar</span>
+      </div>
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button id="lang-toggle" class="icon-button" aria-label="Switch Language" title="Switch Language / 切换语言">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="lang-text">ZH</span>
+        </button>
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="icon-button" aria-label="Toggle Theme" title="Toggle Theme / 切换主题">
+          <!-- Sun Icon -->
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
   <main class="page">
-    <section class="hero">
-      <p class="eyebrow">GitHub Pages Ready</p>
-      <h1>Turn any avatar into the Google-style framed profile picture.</h1>
-      <p class="hero-copy">
-        Upload an image, preview the result instantly in your browser, and download the generated PNG.
+    <section class="hero animate-fade-in">
+      <p class="eyebrow" data-i18n="eyebrow">GitHub Pages Ready</p>
+      <h1 data-i18n="title">Turn any avatar into the Google-style framed profile picture.</h1>
+      <p class="hero-copy" data-i18n="hero-copy">
+        Upload an image, preview the result instantly in your browser, and download the generated PNG. 
         The output uses the calibrated four-color ring layout and the thinner 4% color ring plus 2% white spacer.
       </p>
     </section>
 
     <section class="workspace">
-      <div class="panel controls">
-        <h2>Upload</h2>
-        <p class="panel-copy">Images are processed locally in your browser. Nothing is sent to a server.</p>
+      <!-- CONTROL PANEL -->
+      <div class="panel controls animate-slide-up">
+        <h2 data-i18n="panel-upload-header">Upload Avatar</h2>
+        <p class="panel-copy" data-i18n="panel-upload-copy">Images are processed locally in your browser. Nothing is sent to a server.</p>
 
-        <label class="upload-zone" for="file-input">
+        <!-- Drag & Drop Zone -->
+        <label class="upload-zone" id="drop-zone" for="file-input">
           <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp,image/bmp">
-          <span class="upload-title">Choose an avatar</span>
-          <span class="upload-subtitle">PNG, JPG, WEBP, BMP</span>
+          <div class="upload-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <span class="upload-title" data-i18n="upload-title">Choose an avatar</span>
+          <span class="upload-subtitle" data-i18n="upload-subtitle">or drag & drop here (PNG, JPG, WEBP, BMP)</span>
         </label>
 
-        <div class="actions">
-          <button id="download-button" class="primary-button" disabled>Download PNG</button>
+        <!-- Presets Section -->
+        <div class="presets-section">
+          <h3 data-i18n="presets-title">Or use a preset</h3>
+          <div class="presets-grid" id="presets-container">
+            <!-- Dynamic presets will be injected here via JS -->
+          </div>
         </div>
 
-        <dl class="spec-list">
-          <div>
-            <dt>Color ring</dt>
-            <dd>4% of output size</dd>
-          </div>
-          <div>
-            <dt>White spacer</dt>
-            <dd>2% of output size</dd>
-          </div>
-          <div>
-            <dt>Output size</dt>
-            <dd>Shorter edge of the uploaded image</dd>
-          </div>
-        </dl>
+        <hr class="divider">
 
-        <p id="status" class="status">Waiting for an image.</p>
+        <!-- Sliders & Controls -->
+        <div class="settings-group">
+          <h3 data-i18n="ring-settings-header">Ring Settings</h3>
+          
+          <div class="control-row">
+            <div class="control-label">
+              <span data-i18n="label-ring-width">Ring Thickness</span>
+              <span id="ring-width-val" class="control-value">4.0%</span>
+            </div>
+            <input type="range" id="ring-width-input" min="1" max="15" step="0.5" value="4">
+          </div>
+
+          <div class="control-row">
+            <div class="control-label">
+              <span data-i18n="label-gap-width">White Spacer</span>
+              <span id="gap-width-val" class="control-value">2.0%</span>
+            </div>
+            <input type="range" id="gap-width-input" min="0" max="10" step="0.5" value="2">
+          </div>
+
+          <div class="control-row">
+            <span class="sub-label" data-i18n="label-palette">Color Palette</span>
+            <div class="palette-options">
+              <button class="palette-btn active" data-palette="classic" title="Classic Google" data-i18n="palette-classic">Google Classic</button>
+              <button class="palette-btn" data-palette="monochrome" title="Monochrome" data-i18n="palette-monochrome">Monochrome</button>
+              <button class="palette-btn" data-palette="neon" title="Neon" data-i18n="palette-neon">Neon</button>
+              <button class="palette-btn" data-palette="pastel" title="Pastel" data-i18n="palette-pastel">Pastel</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3 data-i18n="avatar-settings-header">Avatar Adjustments</h3>
+
+          <div class="control-row">
+            <div class="control-label">
+              <span data-i18n="label-zoom">Avatar Zoom</span>
+              <span id="zoom-val" class="control-value">100%</span>
+            </div>
+            <input type="range" id="zoom-input" min="50" max="200" step="1" value="100">
+          </div>
+
+          <div class="control-row">
+            <div class="control-label">
+              <span data-i18n="label-offset-x">X Offset</span>
+              <span id="offset-x-val" class="control-value">0%</span>
+            </div>
+            <input type="range" id="offset-x-input" min="-50" max="50" step="1" value="0">
+          </div>
+
+          <div class="control-row">
+            <div class="control-label">
+              <span data-i18n="label-offset-y">Y Offset</span>
+              <span id="offset-y-val" class="control-value">0%</span>
+            </div>
+            <input type="range" id="offset-y-input" min="-50" max="50" step="1" value="0">
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="download-button" class="primary-button" disabled data-i18n="btn-download">Download PNG</button>
+          <button id="reset-button" class="secondary-button" data-i18n="btn-reset">Reset Settings</button>
+        </div>
+
+        <p id="status" class="status" data-i18n="status-waiting">Waiting for an image.</p>
       </div>
 
-      <div class="panel preview-panel">
+      <!-- PREVIEW PANEL -->
+      <div class="panel preview-panel animate-slide-up" style="animation-delay: 100ms;">
         <div class="preview-grid">
           <div class="preview-card">
-            <h2>Original</h2>
+            <h2 data-i18n="preview-original">Original</h2>
             <div class="preview-surface">
               <img id="input-preview" alt="Uploaded avatar preview">
-              <p id="input-placeholder" class="placeholder">Your uploaded image will appear here.</p>
+              <div id="input-placeholder" class="placeholder-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="placeholder-icon">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <p class="placeholder" data-i18n="placeholder-original">Your uploaded image will appear here.</p>
+              </div>
             </div>
           </div>
 
           <div class="preview-card">
-            <h2>Generated</h2>
+            <h2 data-i18n="preview-generated">Generated</h2>
             <div class="preview-surface">
               <canvas id="output-canvas" width="512" height="512"></canvas>
-              <p id="output-placeholder" class="placeholder">The generated avatar will appear here.</p>
+              <div id="output-placeholder" class="placeholder-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="placeholder-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="10" r="2"></circle>
+                  <path d="M6.12 18.28A8.001 8.001 0 0 1 12 16a8.001 8.001 0 0 1 5.88 2.28"></path>
+                </svg>
+                <p class="placeholder" data-i18n="placeholder-generated">The generated avatar will appear here.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
   </main>
+
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p class="copyright">&copy; 2026 G-Avatar. All rights reserved.</p>
+      <p class="author-credits">
+        <span data-i18n="footer-created-by">Created by</span> <a href="https://github.com/furina315" target="_blank" rel="noopener noreferrer">Hoshino Shio</a> | 
+        <span data-i18n="footer-thanks">Thanks to the original creator</span> <a href="https://github.com/2010384626" target="_blank" rel="noopener noreferrer">2010384626</a> | 
+        <span data-i18n="footer-announcement">Some code was generated by</span> <a href="https://deepmind.google/models/gemini/" target="_blank" rel="noopener noreferrer">Gemini</a>
+      </p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
